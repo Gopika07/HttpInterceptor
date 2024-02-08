@@ -9,20 +9,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './call-api.component.html',
   styleUrl: './call-api.component.scss'
 })
-export class CallApiComponent implements OnInit {
+export class CallApiComponent {
 
-  public getData: any;
-    constructor(private http: HttpClient){
 
-    }
+  constructor(private http: HttpClient){
 
-    ngOnInit(): void{
+  }
+
+    public getApi(){
       this.http.get('https://jsonplaceholder.typicode.com/posts/1').subscribe((data) => {
-      this.getData = data;
+      console.log(data);
       })
     }
 
-    public getApi(){
-      console.log(this.getData);
+    public mockApi(){
+      this.http.get('https://jsonplaceholder.typicode.com/invalidddd').subscribe((data) => {
+        console.log(data);
+      })
     }
 }
