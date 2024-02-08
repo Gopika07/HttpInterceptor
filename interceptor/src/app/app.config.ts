@@ -9,10 +9,14 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { responseInterceptor } from './response.interceptor';
+import { provideToastr } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     { provide: HTTP_INTERCEPTORS, useClass: responseInterceptor, multi: true },
+    provideAnimations(),
+    provideToastr(),
   ],
 };
